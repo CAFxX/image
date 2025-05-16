@@ -53,13 +53,7 @@ func lerp(t, px, py, qx, qy float32) (x, y float32) {
 }
 
 func clamp(i, width int32) uint {
-	if i < 0 {
-		return 0
-	}
-	if i < width {
-		return uint(i)
-	}
-	return uint(width)
+	return uint(max(0, min(i, width))) // 0 <= i <= width
 }
 
 // NewRasterizer returns a new Rasterizer whose rendered mask image is bounded
